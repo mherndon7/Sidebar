@@ -3,6 +3,7 @@
   height: 4.8rem;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid var(--surface_border);
 }
 
 .header__title {

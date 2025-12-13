@@ -1,0 +1,24 @@
+.app__container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 24rem 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'header header'
+    'sidebar content';
+}
+
+.app__header {
+  grid-area: header;
+  height: fit-content;
+}
+
+.app__sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  border-right: 1px solid var(--surface_border);
+}
+
+.app__content {
+  grid-area: content;
+}

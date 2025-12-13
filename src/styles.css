@@ -7,7 +7,9 @@ body {
   --background: #121212;
   --header: #1d1d1d;
   --primary: #15794a;
+
   --text_on_surface: #ffffff;
+  --surface_border: #383838d8;
 }
 
 body {
