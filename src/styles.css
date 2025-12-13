@@ -4,12 +4,16 @@ body {
   font-size: 62.6%;
   height: 100%;
 
+  --border_radius: 0.5rem;
+
   --background: #121212;
   --header: #1d1d1d;
   --primary: #15794a;
 
   --text_on_surface: #ffffff;
   --surface_border: #383838d8;
+
+  --scrollbar_track_piece: #1d1d1d;
 }
 
 body {
@@ -27,6 +31,33 @@ body {
   box-sizing: border-box;
 }
 
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+  border-left: 3px solid var(--scrollbar_track_piece);
+  border-radius: var(--border_radius);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: var(--border_radius);
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: var(--scrollbar_track_piece);
+  border-radius: var(--border_radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: var(--border_radius);
+}
+
+/* Icons */
 .icon {
   width: 2rem;
   height: 2rem;
