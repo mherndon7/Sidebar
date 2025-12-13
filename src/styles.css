@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  font-size: 62.6%;
+  height: 100%;
+
+  --background: #121212;
+  ---primary: #15794a;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  margin: 0;
+  background-color: var(--background);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
