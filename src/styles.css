@@ -5,7 +5,9 @@ body {
   height: 100%;
 
   --background: #121212;
-  ---primary: #15794a;
+  --header: #1d1d1d;
+  --primary: #15794a;
+  --text_on_surface: #ffffff;
 }
 
 body {
@@ -13,6 +15,8 @@ body {
   line-height: 2rem;
   margin: 0;
   background-color: var(--background);
+  color: var(--text_on_surface);
+  font-family: 'Roboto', sans-serif;
 }
 
 *,
