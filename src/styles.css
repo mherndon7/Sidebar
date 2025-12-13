@@ -26,3 +26,26 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  color: var(--text_on_surface);
+  fill: var(--text_on_surface);
+}
+
+.icon--small {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.icon--med {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.icon--large {
+  width: 3rem;
+  height: 3rem;
+}
