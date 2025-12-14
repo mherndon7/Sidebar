@@ -13,6 +13,9 @@ body {
   --text_on_surface: #ffffff;
   --surface_border: #383838d8;
 
+  --list_hover: #3f3f3f;
+  --list_selected: #282828;
+
   --scrollbar_track_piece: #1d1d1d;
 }
 
