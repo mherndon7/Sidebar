@@ -1,8 +1,34 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, effect, signal, WritableSignal } from '@angular/core';
+
+interface ToolOption {
+  readonly id: string;
+  readonly label: string;
+}
+class ToolGroup implements ToolOption {
+  readonly id: string;
+  readonly iconViewBox: string;
+  readonly options: ToolOption[];
+
+  constructor(
+    readonly label: string,
+    readonly icon: string,
+    options?: ToolOption[],
+    iconViewBox?: string
+  ) {
+    this.id = label.toLocaleLowerCase();
+    this.options = options ?? [];
+    this.iconViewBox = iconViewBox ?? '0 0 16 16';
+  }
+
+  get expandable(): boolean {
+    return this.options.length > 0;
+  }
+}
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
@@ -12,6 +38,21 @@ export class SidebarComponent {
   protected readonly collapsed: WritableSignal<boolean>;
 
   protected hideTextTimer?: number;
+
+  protected readonly groups: ToolGroup[] = [
+    new ToolGroup('Home', 'house'),
+    new ToolGroup('Models', 'rocket-takeoff'),
+    new ToolGroup('Configurations', 'stack'),
+    new ToolGroup('Results', 'database'),
+    new ToolGroup('Plots', 'graph-up'),
+    new ToolGroup('Submission', 'terminal'),
+  ];
+
+  protected readonly coreGroups: ToolGroup[] = [
+    new ToolGroup('Change Log', 'clock-history'),
+    new ToolGroup('Settings', 'gear'),
+    // new ToolGroup('Help', 'question-circle'),
+  ];
 
   constructor() {
     this.activeTool = signal('home');

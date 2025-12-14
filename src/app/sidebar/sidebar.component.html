@@ -1,101 +1,21 @@
 <section class="sidebar" [class.sidebar--collapsed]="collapsing()">
   <span class="sidebar__tools">
-    <div class="sidebar__group" [attr.active]="activeTool() === 'home'" (click)="onActive('home')">
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#house"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Home</h2>
-      }
-    </div>
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'assets'"
-      (click)="onActive('assets')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#rocket-takeoff"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Models</h2>
-      }
-    </div>
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'configurations'"
-      (click)="onActive('configurations')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#stack"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Configurations</h2>
-      }
-    </div>
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'results'"
-      (click)="onActive('results')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#database"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Results</h2>
-      }
-    </div>
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'plots'"
-      (click)="onActive('plots')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#graph-up"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Plots</h2>
-      }
-    </div>
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'submission'"
-      (click)="onActive('submission')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#terminal"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Submission</h2>
-      }
-    </div>
+    @for (group of groups; track group.id) {
+    <ng-container
+      [ngTemplateOutlet]="groupRef"
+      [ngTemplateOutletContext]="{ $implicit: group }"
+    ></ng-container>
+    }
   </span>
 
   <span class="sidebar__footer-actions">
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'changelog'"
-      (click)="onActive('changelog')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#clock-history"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Change Log</h2>
-      }
-    </div>
-    <div
-      class="sidebar__group"
-      [attr.active]="activeTool() === 'settings'"
-      (click)="onActive('settings')"
-    >
-      <svg class="icon" viewBox="0 0 16 16">
-        <use href="/icons/_sprite.svg#gear"></use>
-      </svg>
-      @if (!collapsed()) {
-      <h2 class="sidebar__group-label">Settings</h2>
-      }
-    </div>
-    @if (collapsed()) {
+    @for (group of coreGroups; track group.id) {
+    <ng-container
+      [ngTemplateOutlet]="groupRef"
+      [ngTemplateOutletContext]="{ $implicit: group }"
+    ></ng-container>
+
+    } @if (collapsed()) {
     <div class="sidebar__group" (click)="collapsing.set(false)">
       <svg class="icon" viewBox="2 2 12 12">
         <use href="/icons/_sprite.svg#indent"></use>
@@ -111,3 +31,18 @@
     }
   </span>
 </section>
+
+<ng-template #groupRef let-group>
+  <div
+    class="sidebar__group"
+    [attr.active]="activeTool() === group.id"
+    (click)="onActive(group.id)"
+  >
+    <svg class="icon" [attr.viewBox]="group.iconViewBox">
+      <use [attr.href]="'/icons/_sprite.svg#' + group.icon"></use>
+    </svg>
+    @if (!collapsed()) {
+    <h2 class="sidebar__group-label">{{ group.label }}</h2>
+    }
+  </div>
+</ng-template>
