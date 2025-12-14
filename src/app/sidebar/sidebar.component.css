@@ -49,25 +49,13 @@
 }
 
 .sidebar__option {
-  padding-left: 4rem;
-  transition: all 0.25s ease-in-out;
-  overflow: hidden;
+  max-height: 4rem;
+  padding-left: 3.5rem;
 }
 
 .sidebar__option-label {
   font-size: 1.4rem;
   margin: 0;
-}
-
-.sidebar__option--expanded {
-  transform: translateY(0%);
-}
-
-.sidebar__option--collapsed {
-  transform: translateY(-100%);
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 .sidebar__tools {

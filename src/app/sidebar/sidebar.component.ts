@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, effect, signal, WritableSignal } from '@angular/core';
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 
 interface ToolOption {
   readonly id: string;
@@ -29,7 +30,7 @@ class ToolGroup implements ToolOption {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [NgTemplateOutlet],
+  imports: [NgTemplateOutlet, NgbCollapse],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
