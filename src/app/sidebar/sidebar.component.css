@@ -12,12 +12,22 @@
   padding: 1rem;
   display: flex;
   align-items: center;
+  border: 2px solid transparent;
 }
 
-.sidebar__group:hover {
-  background-color: var(--list_hover);
+.sidebar__group:hover,
+.sidebar__group[active='true']:hover {
+  background-color: var(--sidebar_hover);
   border-radius: var(--border_radius);
   cursor: pointer;
+}
+
+.sidebar__group[active='false']:active {
+  background-color: var(--sidebar_active);
+}
+
+.sidebar__group[active='true'] {
+  background-color: var(--sidebar_selected);
 }
 
 .sidebar__group h2 {

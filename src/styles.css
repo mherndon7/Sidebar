@@ -3,6 +3,7 @@ html,
 body {
   font-size: 62.6%;
   height: 100%;
+  margin: 0;
 
   --border_radius: 0.5rem;
 
@@ -13,8 +14,9 @@ body {
   --text_on_surface: #ffffff;
   --surface_border: #383838d8;
 
-  --list_hover: #3f3f3f;
-  --list_selected: #282828;
+  --sidebar_hover: #3f3f3f;
+  --sidebar_active: #383838;
+  --sidebar_selected: #282828;
 
   --scrollbar_track_piece: #1d1d1d;
 }
