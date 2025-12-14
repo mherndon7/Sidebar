@@ -1,11 +1,15 @@
 .sidebar {
   background-color: var(--header);
-  width: 100%;
+  width: 24rem;
   height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
   border-right: 1px solid var(--surface_border);
   overflow-y: auto;
+}
+
+.sidebar--collapsed {
+  width: 5rem;
 }
 
 .sidebar__group {

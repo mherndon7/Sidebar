@@ -8,9 +8,11 @@ import { Component, signal, WritableSignal } from '@angular/core';
 })
 export class SidebarComponent {
   protected readonly activeTool: WritableSignal<string>;
+  protected readonly collapsed: WritableSignal<boolean>;
 
   constructor() {
     this.activeTool = signal('home');
+    this.collapsed = signal(false);
   }
 
   protected onActive(tool: string): void {
