@@ -57,10 +57,12 @@
     }
   </div>
 
-  @if (group.expanded && !collapsed()) {
+  @if (!collapsed()) {
     @for (option of group.options; track option.id) {
       <div
         class="sidebar__group sidebar__option noselect"
+        [class.sidebar__option--expanded]="group.expanded"
+        [class.sidebar__option--collapsed]="!group.expanded"
         [attr.active]="activeTool() === option.id"
         (click)="onActive(option.id)"
       >

@@ -45,7 +45,11 @@ export class SidebarComponent {
     new ToolGroup('Models', 'rocket-takeoff', true, [{ id: 'add-model', label: 'Add Model' }]),
     new ToolGroup('Configurations', 'stack'),
     new ToolGroup('Results', 'database'),
-    new ToolGroup('Plots', 'graph-up'),
+    new ToolGroup('Plots', 'graph-up', true, [
+      { id: 'line-plot', label: 'Line Plot' },
+      { id: 'contour-plot', label: 'Contour Plot' },
+      { id: 'safety-fan', label: 'Safety Fan' },
+    ]),
     new ToolGroup('Submission', 'terminal'),
   ];
 
