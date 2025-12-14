@@ -46,6 +46,18 @@
     </div>
     <div
       class="sidebar__group"
+      [attr.active]="activeTool() === 'plots'"
+      (click)="onActive('plots')"
+    >
+      <svg class="icon" viewBox="0 0 16 16">
+        <use href="/icons/_sprite.svg#graph-up"></use>
+      </svg>
+      @if (!collapsed()) {
+      <h2 class="sidebar__group-label">Plots</h2>
+      }
+    </div>
+    <div
+      class="sidebar__group"
       [attr.active]="activeTool() === 'submission'"
       (click)="onActive('submission')"
     >
