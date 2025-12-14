@@ -1,4 +1,4 @@
-<section class="sidebar" [class.sidebar--collapsed]="collapsed()">
+<section class="sidebar" [class.sidebar--collapsed]="collapsing()">
   <span class="sidebar__tools">
     <div class="sidebar__group" [attr.active]="activeTool() === 'home'" (click)="onActive('home')">
       <svg class="icon" viewBox="0 0 16 16">
@@ -84,13 +84,13 @@
       }
     </div>
     @if (collapsed()) {
-    <div class="sidebar__group" (click)="collapsed.set(false)">
+    <div class="sidebar__group" (click)="collapsing.set(false)">
       <svg class="icon" viewBox="2 2 12 12">
         <use href="/icons/_sprite.svg#indent"></use>
       </svg>
     </div>
     } @else {
-    <div class="sidebar__group" (click)="collapsed.set(true)">
+    <div class="sidebar__group" (click)="collapsing.set(true)">
       <svg class="icon" viewBox="2 2 12 12">
         <use href="/icons/_sprite.svg#unindent"></use>
       </svg>
