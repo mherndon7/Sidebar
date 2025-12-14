@@ -13,8 +13,9 @@ class ToolGroup implements ToolOption {
   constructor(
     readonly label: string,
     readonly icon: string,
+    public expanded: boolean = false,
     options?: ToolOption[],
-    iconViewBox?: string
+    iconViewBox?: string,
   ) {
     this.id = label.toLocaleLowerCase();
     this.options = options ?? [];
@@ -33,7 +34,7 @@ class ToolGroup implements ToolOption {
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  protected readonly activeTool: WritableSignal<string>;
+  protected readonly activeTool: WritableSignal<ToolGroup>;
   protected readonly collapsing: WritableSignal<boolean>;
   protected readonly collapsed: WritableSignal<boolean>;
 
@@ -41,7 +42,7 @@ export class SidebarComponent {
 
   protected readonly groups: ToolGroup[] = [
     new ToolGroup('Home', 'house'),
-    new ToolGroup('Models', 'rocket-takeoff'),
+    new ToolGroup('Models', 'rocket-takeoff', true, [{ id: 'add-model', label: 'Add Model' }]),
     new ToolGroup('Configurations', 'stack'),
     new ToolGroup('Results', 'database'),
     new ToolGroup('Plots', 'graph-up'),
@@ -55,7 +56,7 @@ export class SidebarComponent {
   ];
 
   constructor() {
-    this.activeTool = signal('home');
+    this.activeTool = signal(this.groups[0]);
     this.collapsing = signal(false);
     this.collapsed = signal(false);
 
@@ -72,7 +73,8 @@ export class SidebarComponent {
     });
   }
 
-  protected onActive(tool: string): void {
+  protected onActive(tool: ToolGroup): void {
+    if (tool.expandable && !this.collapsed()) tool.expanded = !tool.expanded;
     this.activeTool.set(tool);
   }
 }
