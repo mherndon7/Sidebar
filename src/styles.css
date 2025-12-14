@@ -69,6 +69,7 @@ body {
   margin-right: 0.5rem;
   color: var(--text_on_surface);
   fill: var(--text_on_surface);
+  background-size: 100% auto;
 }
 
 .icon--small {
@@ -84,4 +85,26 @@ body {
 .icon--large {
   width: 3rem;
   height: 3rem;
+}
+
+/* Chevron */
+.chevron {
+  margin-left: auto;
+  transition: transform 0.25s ease-in-out;
+}
+
+.chevron[direction='up'] {
+  transform: rotate(180deg);
+}
+
+.chevron[direction='down'] {
+  transform: rotate(0deg);
+}
+
+.chevron[direction='right'] {
+  transform: rotate(-90deg);
+}
+
+.chevron[direction='left'] {
+  transform: rotate(90deg);
 }
