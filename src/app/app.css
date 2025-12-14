@@ -1,7 +1,7 @@
 .app__container {
   height: 100%;
   display: grid;
-  grid-template-columns: 24rem 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas:
     'header header'

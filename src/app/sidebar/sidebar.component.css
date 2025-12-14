@@ -6,6 +6,10 @@
   grid-template-rows: 1fr auto;
   border-right: 1px solid var(--surface_border);
   overflow-y: auto;
+
+  transition: 0.25s width;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 .sidebar--collapsed {
