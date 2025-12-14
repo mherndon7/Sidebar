@@ -6,6 +6,7 @@
   grid-template-areas:
     'header header'
     'sidebar content';
+  overflow-y: hidden;
 }
 
 .app__header {
@@ -16,7 +17,7 @@
 .app__sidebar {
   grid-area: sidebar;
   height: 100%;
-  border-right: 1px solid var(--surface_border);
+  min-height: calc(100% - 4.8rem);
 }
 
 .app__content {
