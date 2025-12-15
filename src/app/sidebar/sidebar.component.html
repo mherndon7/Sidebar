@@ -18,13 +18,13 @@
 
     @if (collapsed()) {
       <div class="sidebar__group" (click)="collapsing.set(false)">
-        <svg class="icon" viewBox="2 2 12 12">
+        <svg class="icon" [class.icon--collapsed]="collapsed()" viewBox="2 2 12 12">
           <use href="/icons/_sprite.svg#indent"></use>
         </svg>
       </div>
     } @else {
       <div class="sidebar__group" (click)="collapsing.set(true)">
-        <svg class="icon" viewBox="2 2 12 12">
+        <svg class="icon" [class.icon--collapsed]="collapsed()" viewBox="2 2 12 12">
           <use href="/icons/_sprite.svg#unindent"></use>
         </svg>
         <h2 class="sidebar__group-label">Collapse Sidebar</h2>
@@ -55,6 +55,7 @@
     <div
       ngbDropdownAnchor
       class="sidebar__group noselect"
+      [class.icon--collapsed]="collapsed()"
       [attr.active]="isActiveGroup(group)"
       (click)="onActive(group, groupDropdown)"
       (mouseenter)="onHover(group, groupDropdown)"
