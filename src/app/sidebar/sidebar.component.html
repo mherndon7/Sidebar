@@ -44,8 +44,8 @@
         <button
           ngbDropdownItem
           class="sidebar__option-label sidebar__dropdown-item"
-          [attr.active]="activeTool() === option.id"
-          (click)="onActive(option.id)"
+          [attr.active]="activeTool().id === option.id"
+          (click)="onActiveOption(option)"
         >
           {{ option.label }}
         </button>
@@ -55,7 +55,7 @@
     <div
       ngbDropdownAnchor
       class="sidebar__group noselect"
-      [attr.active]="activeTool().id === group.id"
+      [attr.active]="isActiveGroup(group)"
       (click)="onActive(group, groupDropdown)"
       (mouseenter)="onHover(group, groupDropdown)"
       (mouseleave)="onLeave(groupDropdown)"
@@ -85,8 +85,8 @@
       <div #collapse="ngbCollapse" [ngbCollapse]="!group.expanded">
         <div
           class="sidebar__group sidebar__option noselect"
-          [attr.active]="activeTool() === option.id"
-          (click)="onActive(option.id)"
+          [attr.active]="activeTool().id === option.id"
+          (click)="onActiveOption(option)"
         >
           <h3 class="sidebar__option-label">{{ option.label }}</h3>
         </div>

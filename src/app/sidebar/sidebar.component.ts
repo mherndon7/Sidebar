@@ -30,6 +30,10 @@ class ToolGroup implements ToolOption {
     this.iconViewBox = iconViewBox ?? '0 0 16 16';
   }
 
+  isChild(group: ToolOption): boolean {
+    return this.options.some((option) => option.id === group.id);
+  }
+
   get expandable(): boolean {
     return this.options.length > 0;
   }
@@ -51,7 +55,7 @@ class ToolGroup implements ToolOption {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
-  protected readonly activeTool: WritableSignal<ToolGroup>;
+  protected readonly activeTool: WritableSignal<ToolOption>;
   protected readonly collapsing: WritableSignal<boolean>;
   protected readonly collapsed: WritableSignal<boolean>;
 
@@ -97,26 +101,35 @@ export class SidebarComponent {
     });
   }
 
-  protected onActive(tool: ToolGroup, dropdown?: NgbDropdown): void {
+  protected onActive(tool: ToolGroup, dropdown: NgbDropdown): void {
     if (tool.expandable && !this.collapsed()) {
       tool.expanded = !tool.expanded;
-      if (tool.expanded) dropdown?.close();
+      if (tool.expanded) dropdown.close();
     } else {
       this.activeTool.set(tool);
     }
   }
 
-  onHover(group: ToolGroup, dropdown: NgbDropdown): void {
+  protected onActiveOption(option: ToolOption): void {
+    this.activeTool.set(option);
+  }
+
+  protected isActiveGroup(group: ToolGroup): boolean {
+    const isCollapsed = !group.expanded || this.collapsed();
+    return this.activeTool().id === group.id || (isCollapsed && group.isChild(this.activeTool()));
+  }
+
+  protected onHover(group: ToolGroup, dropdown: NgbDropdown): void {
     if (group.expandable && (this.collapsed() || !group.expanded)) dropdown.open();
   }
 
-  onLeave(dropdown: NgbDropdown): void {
+  protected onLeave(dropdown: NgbDropdown): void {
     setTimeout(() => {
       if (!this.dropdownHovered) dropdown.close();
     }, 10);
   }
 
-  onHoverDropdownMenu(hovered: boolean, dropdown: NgbDropdown): void {
+  protected onHoverDropdownMenu(hovered: boolean, dropdown: NgbDropdown): void {
     this.dropdownHovered = hovered;
     if (!hovered) dropdown.close();
   }
