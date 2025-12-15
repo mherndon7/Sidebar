@@ -105,7 +105,7 @@ export class SidebarComponent {
     if (tool.expandable && !this.collapsed()) {
       tool.expanded = !tool.expanded;
       if (tool.expanded) dropdown.close();
-    } else {
+    } else if (!this.collapsed()) {
       this.activeTool.set(tool);
     }
   }
