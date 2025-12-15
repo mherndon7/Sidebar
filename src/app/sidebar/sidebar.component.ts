@@ -1,6 +1,13 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, effect, signal, WritableSignal } from '@angular/core';
-import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbCollapse,
+  NgbDropdown,
+  NgbDropdownAnchor,
+  NgbDropdownButtonItem,
+  NgbDropdownItem,
+  NgbDropdownMenu,
+} from '@ng-bootstrap/ng-bootstrap';
 
 interface ToolOption {
   readonly id: string;
@@ -30,7 +37,15 @@ class ToolGroup implements ToolOption {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [NgTemplateOutlet, NgbCollapse],
+  imports: [
+    NgTemplateOutlet,
+    NgbCollapse,
+    NgbDropdown,
+    NgbDropdownMenu,
+    NgbDropdownItem,
+    NgbDropdownButtonItem,
+    NgbDropdownAnchor,
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
@@ -40,6 +55,7 @@ export class SidebarComponent {
   protected readonly collapsed: WritableSignal<boolean>;
 
   protected hideTextTimer?: number;
+  protected dropdownHovered: boolean;
 
   protected readonly groups: ToolGroup[] = [
     new ToolGroup('Home', 'house'),
@@ -61,6 +77,8 @@ export class SidebarComponent {
   ];
 
   constructor() {
+    this.dropdownHovered = false;
+
     this.activeTool = signal(this.groups[0]);
     this.collapsing = signal(false);
     this.collapsed = signal(false);
@@ -78,8 +96,27 @@ export class SidebarComponent {
     });
   }
 
-  protected onActive(tool: ToolGroup): void {
-    if (tool.expandable && !this.collapsed()) tool.expanded = !tool.expanded;
-    this.activeTool.set(tool);
+  protected onActive(tool: ToolGroup, dropdown?: NgbDropdown): void {
+    if (tool.expandable && !this.collapsed()) {
+      tool.expanded = !tool.expanded;
+      if (tool.expanded) dropdown?.close();
+    } else {
+      this.activeTool.set(tool);
+    }
+  }
+
+  onHover(group: ToolGroup, dropdown: NgbDropdown): void {
+    if (group.expandable && (this.collapsed() || !group.expanded)) dropdown.open();
+  }
+
+  onLeave(dropdown: NgbDropdown): void {
+    setTimeout(() => {
+      if (!this.dropdownHovered) dropdown.close();
+    }, 10);
+  }
+
+  onHoverDropdownMenu(hovered: boolean, dropdown: NgbDropdown): void {
+    this.dropdownHovered = hovered;
+    if (!hovered) dropdown.close();
   }
 }

@@ -15,6 +15,7 @@
         [ngTemplateOutletContext]="{ $implicit: group }"
       ></ng-container>
     }
+
     @if (collapsed()) {
       <div class="sidebar__group" (click)="collapsing.set(false)">
         <svg class="icon" viewBox="2 2 12 12">
@@ -33,28 +34,45 @@
 </section>
 
 <ng-template #groupRef let-group>
-  <div
-    class="sidebar__group noselect"
-    [attr.active]="activeTool().id === group.id"
-    (click)="onActive(group)"
-  >
-    <svg class="icon" [attr.viewBox]="group.iconViewBox">
-      <use [attr.href]="'/icons/_sprite.svg#' + group.icon"></use>
-    </svg>
-
-    @if (!collapsed()) {
-      <h2 class="sidebar__group-label">{{ group.label }}</h2>
-
-      @if (group.expandable) {
-        <svg
-          class="icon chevron"
-          [attr.direction]="group.expanded ? 'down' : 'right'"
-          viewBox="0 0 16 16"
-        >
-          <use href="/icons/_sprite.svg#chevron-down"></use>
-        </svg>
+  <div #groupDropdown="ngbDropdown" ngbDropdown placement="right-top" style="position: static">
+    <div
+      ngbDropdownMenu
+      (mouseenter)="onHoverDropdownMenu(true, groupDropdown)"
+      (mouseleave)="onHoverDropdownMenu(false, groupDropdown)"
+    >
+      @for (option of group.options; track option.id) {
+        <button ngbDropdownItem class="sidebar__option-label sidebar__dropdown-item">
+          {{ option.label }}
+        </button>
       }
-    }
+    </div>
+
+    <div
+      ngbDropdownAnchor
+      class="sidebar__group noselect"
+      [attr.active]="activeTool().id === group.id"
+      (click)="onActive(group, groupDropdown)"
+      (mouseenter)="onHover(group, groupDropdown)"
+      (mouseleave)="onLeave(groupDropdown)"
+    >
+      <svg class="icon" [attr.viewBox]="group.iconViewBox">
+        <use [attr.href]="'/icons/_sprite.svg#' + group.icon"></use>
+      </svg>
+
+      @if (!collapsed()) {
+        <h2 class="sidebar__group-label">{{ group.label }}</h2>
+
+        @if (group.expandable) {
+          <svg
+            class="icon chevron"
+            [attr.direction]="group.expanded ? 'down' : 'right'"
+            viewBox="0 0 16 16"
+          >
+            <use href="/icons/_sprite.svg#chevron-down"></use>
+          </svg>
+        }
+      }
+    </div>
   </div>
 
   @if (!collapsed()) {
