@@ -126,7 +126,7 @@ export class SidebarComponent {
   protected onLeave(dropdown: NgbDropdown): void {
     setTimeout(() => {
       if (!this.dropdownHovered) dropdown.close();
-    }, 10);
+    }, 50);
   }
 
   protected onHoverDropdownMenu(hovered: boolean, dropdown: NgbDropdown): void {
