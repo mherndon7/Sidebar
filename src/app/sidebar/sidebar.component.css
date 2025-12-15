@@ -72,3 +72,17 @@
 .sidebar__dropdown-item {
   padding: 1rem;
 }
+
+.sidebar__dropdown-item[active='true'] {
+  background-color: var(--sidebar_selected);
+}
+
+.dropdown-item:hover,
+.dropdown-item:hover .icon {
+  background-color: var(--sidebar_hover);
+}
+
+.dropdown-item:active,
+.dropdown-item:active .icon {
+  background-color: var(--sidebar_active);
+}

@@ -41,7 +41,12 @@
       (mouseleave)="onHoverDropdownMenu(false, groupDropdown)"
     >
       @for (option of group.options; track option.id) {
-        <button ngbDropdownItem class="sidebar__option-label sidebar__dropdown-item">
+        <button
+          ngbDropdownItem
+          class="sidebar__option-label sidebar__dropdown-item"
+          [attr.active]="activeTool() === option.id"
+          (click)="onActive(option.id)"
+        >
           {{ option.label }}
         </button>
       }
