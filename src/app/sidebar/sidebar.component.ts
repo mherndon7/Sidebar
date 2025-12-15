@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, effect, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, signal, WritableSignal } from '@angular/core';
 import {
   NgbCollapse,
   NgbDropdown,
@@ -48,6 +48,7 @@ class ToolGroup implements ToolOption {
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
   protected readonly activeTool: WritableSignal<ToolGroup>;
