@@ -10,8 +10,10 @@ body {
   --background: #121212;
   --header: #1d1d1d;
   --primary: #15794a;
+  --primary_hover: #159057;
 
   --text_on_surface: #ffffff;
+  --text_on_primary: #ffffff;
   --surface_border: #383838d8;
 
   --sidebar_hover: #3f3f3f;
@@ -19,6 +21,9 @@ body {
   --sidebar_selected: #282828;
 
   --scrollbar_track_piece: #1d1d1d;
+
+  --popover: #1d1d1d;
+  --popover_border: #3f3f3f;
 }
 
 body {
@@ -117,4 +122,39 @@ body {
 
 .chevron[direction='left'] {
   transform: rotate(90deg);
+}
+
+/* Ng Bootstrap */
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  padding: 0;
+  background-color: var(--popover);
+  border-color: var(--popover_border);
+  border-radius: var(--border_radius);
+}
+
+.dropdown-item {
+  font-size: 1.6rem;
+  padding: 0.75rem;
+  border-radius: var(--border_radius);
+}
+
+.dropdown-item,
+.dropdown-item .icon {
+  color: var(--text_on_surface);
+}
+
+.dropdown-item:hover,
+.dropdown-item:hover .icon {
+  color: var(--text_on_primary);
+  background-color: var(--primary);
+}
+
+.dropdown-item:active,
+.dropdown-item:active .icon {
+  color: var(--text_on_primary);
+  background-color: var(--primary_hover);
 }
