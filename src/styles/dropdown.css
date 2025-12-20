@@ -1,4 +1,8 @@
 /* Ng Bootstrap Overrides */
+.dropdown-toggle::after {
+  display: none;
+}
+
 .dropdown-menu {
   padding: 0;
   background-color: var(--popover);
@@ -7,7 +11,7 @@
 }
 
 .dropdown-item {
-  font-size: 1.6rem;
+  font-size: var(--font-size);
   padding: 0.75rem;
   border-radius: var(--border_radius);
 }
@@ -23,6 +27,7 @@
   background-color: var(--primary);
 }
 
+.dropdown-item.active,
 .dropdown-item:active,
 .dropdown-item:active .icon {
   color: var(--text_on_primary);
