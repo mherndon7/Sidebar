@@ -5,6 +5,8 @@ body {
   height: 100%;
   margin: 0;
 
+  --font-size: 1.4rem;
+
   --border_radius: 0.5rem;
 
   --background: #121212;
@@ -27,7 +29,7 @@ body {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: var(--font-size);
   line-height: 2rem;
   margin: 0;
   background-color: var(--background);
