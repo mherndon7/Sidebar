@@ -1,0 +1,243 @@
+/* Container for an input with a button at the end */
+.input-button__container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+}
+
+/* Style sheet uplifts below */
+.button {
+  color: var(--text_on_primary);
+  background-color: var(--primary);
+  border-radius: var(--border_radius);
+  border: var(--border_width) solid var(--primary);
+
+  outline: 0;
+  padding: 1rem 2rem;
+  margin: 1rem 0.275rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--primary_hover);
+  border-color: var(--primary_hover);
+}
+
+.button:active {
+  background: var(--primary_click);
+  border-color: var(--primary_click);
+}
+
+.button--squashed {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.button--condensed {
+  margin: 0;
+}
+
+.button--fill {
+  margin: 0;
+  width: 100%;
+}
+
+/* Negative button */
+.button--negative {
+  background-color: var(--negative);
+  border-color: var(--negative);
+  color: var(--text_on_negative);
+}
+
+.button--negative:hover {
+  background-color: var(--negative_hover);
+  border-color: var(--negative_hover);
+  color: var(--text_on_negative);
+}
+
+.button--negative:active {
+  background-color: var(--negative_click);
+  border-color: var(--negative_click);
+  color: var(--text_on_negative);
+}
+
+/* Subtle button */
+.button--subtle {
+  background-color: var(--button_on_surface);
+  border-color: var(--surface_emphasis_border);
+  color: var(--text_on_surface);
+}
+
+.button--subtle:hover {
+  background-color: var(--button_on_surface_hover);
+  border-color: var(--surface_emphasis_border);
+  color: var(--text_on_surface);
+}
+
+.button--subtle:active {
+  background-color: var(--button_on_surface_hover);
+  border-color: var(--surface_emphasis_border);
+  color: var(--text_on_surface);
+}
+
+/* Flat button */
+.button--flat {
+  background-color: transparent;
+  border: 1px solid var(--surface_surface_border);
+  color: var(--text_on_surface);
+}
+
+.button--flat:hover {
+  background-color: var(--surface_surface_border);
+  border-color: var(--surface_surface_border);
+}
+
+.button--flat:active {
+  background-color: var(--input_disabled_background);
+  border-color: var(--input_disabled_border);
+}
+
+/* Flat primary button */
+.button--flat-primary {
+  background-color: transparent;
+  border: 1px solid var(--surface_surface_border);
+  color: var(--text_on_surface);
+}
+
+.button--flat-primary:hover {
+  background: var(--primary_hover);
+  border-color: var(--primary_hover);
+  color: var(--text_on_primary);
+}
+
+.button--flat-primary:active {
+  background: var(--primary_click);
+  border-color: var(--primary_click);
+  color: var(--text_on_primary);
+}
+
+/* Flat negative button */
+.button--flat-negative {
+  background-color: transparent;
+  border: 1px solid var(--surface_surface_border);
+  color: var(--text_on_surface);
+}
+
+.button--flat-negative:hover {
+  background: var(--negative_hover);
+  border-color: var(--negative_hover);
+  color: var(--text_on_primary);
+}
+
+.button--flat-negative:active {
+  background: var(--negative_click);
+  border-color: var(--negative_click);
+  color: var(--text_on_primary);
+}
+
+/* Pill button group */
+.pill button {
+  background-color: var(--surface);
+  color: var(--text_on_surface);
+  margin: 0;
+  width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pill--med button {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.pill button[selected='true'] {
+  background-color: var(--primary);
+  color: var(--text_on_primary);
+}
+.pill button:hover,
+.pill button:active {
+  color: var(--text_on_primary);
+}
+
+.pill button:first-child {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.pill button:last-child {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.button__pill {
+  border-radius: 2rem;
+}
+
+/* Transparent button */
+.button-transparent {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: var(--text_on_surface);
+}
+
+.button-transparent:hover,
+.button-transparent:hover .icon {
+  color: var(--primary_hover);
+}
+
+.button-transparent:active,
+.button-transparent:active .icon {
+  color: var(--primary_click);
+}
+
+.button-transparent--negative:hover,
+.button-transparent--negative:hover .icon {
+  color: var(--negative_hover);
+}
+
+.button-transparent--negative:active,
+.button-transparent--negative:active .icon {
+  color: var(--negative_click);
+}
+
+.button-transparent:disabled,
+.button-transparent:disabled .icon {
+  color: var(--text_disabled);
+  cursor: default;
+}
+
+/* Icon button */
+/* FIXME: Convert icon-button to specify surfaces */
+.icon-button {
+  padding: 0.5rem 0.6rem;
+  margin: 0 0.25rem;
+  background-color: var(--button_on_surface);
+  border: var(--border_width) solid var(--button_on_surface);
+  border-radius: var(--border_radius_medium);
+  color: var(--text_on_surface);
+}
+
+.icon-button:hover {
+  background-color: var(--button_on_surface_hover);
+}
+
+.icon-button:disabled {
+  cursor: default;
+  color: var(--text_disabled);
+  background-color: var(--button_on_surface_disabled);
+  border: var(--border_width) solid var(--button_on_surface_disabled);
+}
+
+/* Disabled buttons defined at the button to avoid overriding*/
+
+.button:disabled {
+  background-color: var(--input_disabled_background);
+  border: var(--border_width) solid var(--input_disabled_background);
+  color: var(--text_on_primary);
+  cursor: default;
+}

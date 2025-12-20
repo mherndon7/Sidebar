@@ -1,0 +1,30 @@
+/* Ng Bootstrap Overrides */
+.dropdown-menu {
+  padding: 0;
+  background-color: var(--popover);
+  border-color: var(--popover_border);
+  border-radius: var(--border_radius);
+}
+
+.dropdown-item {
+  font-size: 1.6rem;
+  padding: 0.75rem;
+  border-radius: var(--border_radius);
+}
+
+.dropdown-item,
+.dropdown-item .icon {
+  color: var(--text_on_surface);
+}
+
+.dropdown-item:hover,
+.dropdown-item:hover .icon {
+  color: var(--text_on_primary);
+  background-color: var(--primary);
+}
+
+.dropdown-item:active,
+.dropdown-item:active .icon {
+  color: var(--text_on_primary);
+  background-color: var(--primary_hover);
+}

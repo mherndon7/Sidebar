@@ -1,0 +1,92 @@
+.text__description {
+  color: var(--text_faded);
+  white-space: pre-wrap;
+  line-height: 2rem;
+}
+
+.text--highlight {
+  background-color: var(--selection_color);
+  color: var(--selection_text_color);
+}
+
+.text__num-runs {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+.text--label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.text--break {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.text--invalid {
+  color: var(--error);
+  font-weight: 500;
+  align-self: start;
+  margin: 0.5rem 0.175rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.text--primary,
+.text--primary .icon {
+  color: var(--primary);
+}
+
+.text--accent {
+  color: var(--accent);
+}
+
+.text--disabled {
+  color: var(--text_disabled);
+}
+
+.text--faded {
+  color: var(--text_faded);
+}
+
+.text--success {
+  color: var(--success);
+}
+
+.text--warning {
+  color: var(--warning);
+}
+
+.text--strong-warning {
+  color: var(--warning);
+  font-size: 1.8rem;
+}
+
+.text--error {
+  color: var(--error);
+}
+
+.text--strong-error {
+  color: var(--error);
+  font-size: 1.8rem;
+}
+
+.text--skipped {
+  color: var(--skipped);
+}
+
+.text--critical {
+  color: var(--text_on_surface);
+  animation: blinkingText 0.35s infinite;
+}
+@keyframes blinkingText {
+  0% {
+    color: var(--text_on_surface);
+  }
+  50% {
+    color: var(--error);
+  }
+}

@@ -1,0 +1,113 @@
+.green-warm {
+  --h1: 32px;
+  --h2: 24px;
+  --h3: 18.72px;
+  --h4: 16px;
+  --h5: 13.28px;
+  --h6: 10.72px;
+  --p1: 14px;
+  --p2: 12px;
+  --p3: 10px;
+
+  --border_width: 0.07rem;
+  --border_width_emphasis: 0.3rem;
+  --border_radius: 0.5rem;
+  --border_radius_medium: 0.3rem;
+  --border_radius_small: 0.2rem;
+
+  --background: #121212;
+
+  --surface: #282828;
+  --surface_border: #282828;
+  --surface_emphasis: #3f3f3f;
+  --surface_emphasis_border: #3f3f3f;
+  --surface_deemphasis: #1d1d1d;
+  --surface_deemphasis_border: #1d1d1d;
+  --surface_surface_border: #575757;
+
+  --primary: #15794a;
+  --primary_hover: #159057;
+  --primary_click: #17a161;
+
+  --secondary: #1dd680;
+  --secondary_hover: #32e993;
+  --secondary_click: #24be76;
+
+  --accent: #ffd700e0;
+  --accent_hover: #ffd900ef;
+  --accent_click: #ffd900;
+
+  --negative: #c1002a;
+  --negative_hover: #a30023;
+  --negative_click: #8f001f;
+
+  --error: #ff0018;
+  --warning: #ebd534;
+  --success: #41c94c;
+  --skipped: #ff4081;
+  --link: #2279e9;
+
+  --text_on_surface: #ffffff;
+  --text_faded: #bbbbbbd8;
+  --text_on_primary: #ffffff;
+  --text_on_secondary: #000000;
+  --text_on_negative: #ffffff;
+  --text_placeholder: #575757;
+  --text_disabled: #8b8b8b;
+
+  --selection_text_color: #ffffff;
+  --selection_color: #15794a;
+  --selection_color_unfocused: #1d1d1d;
+
+  --input_background: #121212;
+  --input_border: #282828;
+  --input_border_popover: #1d1d1d;
+  --input_disabled_background: #4a4a4a;
+  --input_disabled_border: #282828;
+  --input_readonly_background: #282828;
+  --input_readonly_border: #575757;
+
+  --list_selected: #282828;
+  --list_hover: #3f3f3f;
+  --list_selected_surface: #3f3f3f;
+  --list_hover_surface: #515151;
+
+  --popover: #1d1d1d;
+  --popover_border: #3f3f3f;
+  --popover_emphasis: #3f3f3f;
+  --toast_timer: #ffffff56;
+
+  --titlebar_active: #1d1d1d;
+  --titlebar_inactive: #282828;
+
+  --sidebar: #1d1d1d;
+  --sidebar_title_hover: #3f3f3f;
+  --sidebar_plugin_hover: #15794a;
+  --sidebar_text: #ffffff;
+  --sidebar_text_hover: #ffffff;
+
+  --modal_backdrop: #40404060;
+  --loading_backdrop: #40404000;
+  --progress_surface: #15794a;
+  --shadow: #0a0a0a;
+
+  --plot_background: #1d1d1d;
+  --plot_surface: #282828;
+  --plot_grid: #3f3f3f;
+  --plot_text: #ffffff;
+  --plot_frame: #ffffff;
+
+  /* Additions */
+  --error-shadow: #fd0d0d40;
+  --text_faded_hover: #b4b4b4d8;
+  --header: #1d1d1d;
+  --header_home: #ffffff;
+  --header_option: #ffffff8c;
+  --header_option_hover: #ffffffbf;
+  --header_option_active: #ffffff;
+  --button_on_surface: #3f3f3f;
+  --button_on_surface_hover: #575757;
+  --button_on_surface_disabled: #242323;
+  --scrollbar_track_piece: #1d1d1d;
+  --markdown_code_background: #121212;
+}

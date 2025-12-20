@@ -42,11 +42,26 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles/themes/legacy.css",
+              "src/styles/themes/dark-cool.css",
+              "src/styles/themes/dark-warm.css",
+              "src/styles/themes/green-warm.css",
+              "src/styles/themes/light-warm.css",
+              "src/styles.css",
+              "src/styles/button.css",
+              "src/styles/checklist.css",
+              "src/styles/icon.css",
+              "src/styles/input.css",
+              "src/styles/markdown.css",
+              "src/styles/mat.css",
+              "src/styles/selection.css",
+              "src/styles/text.css",
+              "src/styles/tree.css",
+              "src/styles/table.css",
+              "src/styles/dropdown.css",
+              "src/styles/global-collection.css"
             ],
-            "polyfills": [
-              "@angular/localize/init"
-            ]
+            "polyfills": ["@angular/localize/init"]
           },
           "configurations": {
             "production": {

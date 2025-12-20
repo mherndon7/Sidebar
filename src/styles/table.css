@@ -1,0 +1,88 @@
+/* Sort properties */
+th[sortable] {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+th[sortable].desc:after,
+th[sortable].asc:after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC')
+    no-repeat;
+  filter: invert(100%);
+  background-size: 1.7rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0;
+}
+
+th[sortable].desc:after {
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+
+/* Table */
+.variable-table__container {
+  margin: 0 1rem;
+  max-height: 100%;
+  min-height: 26rem;
+  min-width: 67.5rem;
+  overflow: auto;
+  border-radius: var(--border_radius);
+}
+
+.variable-table {
+  background-color: var(--background);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--surface_border);
+  border-top: 0;
+  min-width: 80rem;
+  text-align: left;
+  height: 100%;
+  width: 100%;
+}
+
+.variable-table__heading,
+.variable-table__heading tr th {
+  background-color: var(--titlebar_active);
+  border-top: 1px solid var(--surface_border);
+  cursor: pointer;
+  line-height: 2rem;
+  font-size: 2rem;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+}
+
+.variable-table__heading .mdc-label {
+  line-height: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.variable-table__heading,
+.variable-table__heading tr th {
+  background-color: var(--titlebar_active);
+}
+
+.variable-table__body {
+  font-size: 1.6rem;
+}
+
+.variable-table__body tr:hover {
+  background-color: var(--list_hover);
+}
+
+.variable-table__data {
+  border-bottom: 1px solid var(--surface_border);
+  word-break: break-all;
+  cursor: pointer;
+  min-width: 12rem;
+}
+
+.variable-table--name {
+  min-width: 30rem;
+}

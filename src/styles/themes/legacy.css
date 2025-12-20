@@ -1,0 +1,70 @@
+.legacy {
+  --border_width: 0.07rem;
+  --border_width_emphasis: 0.3rem;
+  --border_radius: 0.5rem;
+  --border_radius_medium: 0.3rem;
+  --border_radius_small: 0.2rem;
+
+  --background: #272b2e;
+
+  --surface: #343a40;
+  --surface_border: #343a40;
+  --surface_emphasis: #3e464d;
+  --surface_emphasis_border: #6c757d;
+  --surface_surface_border: #6c757d;
+
+  --primary: #2077e9;
+  --primary_hover: #4287e1;
+  --primary_click: #5594e6;
+
+  --accent: #ffd700e0;
+  --accent_hover: #ffd900ef;
+  --accent_click: #ffd900;
+
+  --error: #e90000;
+  --warning: #ebd534;
+  --success: #41c94c;
+  --skipped: #ff4081;
+  --link: #2279e9;
+
+  --text_on_surface: #fff;
+  --text_placeholder: #5f6166;
+  --text_on_primary: #fff;
+  --text_faded: #858f99;
+  --text_faded_hover: #88898f;
+  --text_disabled: #8d8e92;
+  --text_on_negative: #fff;
+
+  --selection_text_color: #fff;
+  --selection_color: #2077e9;
+
+  --input_background: #343a40;
+  --input_border: #6c757d;
+  --input_disabled_background: #3e464d;
+  --input_disabled_border: #3e464d;
+
+  --list_selected: #3e464d;
+  --list_hover: #535a61;
+  --list_selected_surface: #3e464d;
+  --list_hover_surface: #535a61;
+
+  --popover: #343a40;
+  --popover_border: #272b2e;
+
+  --titlebar_active: #343a40;
+
+  --progress_surface: #2077e9;
+
+  /* Additions */
+  --error-shadow: #fd0d0d40;
+  --header: #343a40;
+  --header_home: #ffffff;
+  --header_option: #ffffff8c;
+  --header_option_hover: #ffffffbf;
+  --header_option_active: #ffffff;
+  --button_on_surface: #454d55;
+  --button_on_surface_hover: #4e5961;
+  --button_on_surface_disabled: #3b434b;
+  --scrollbar_track_piece: #40454b;
+  --markdown_code_background: var(--background);
+}

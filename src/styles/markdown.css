@@ -1,0 +1,37 @@
+.markdown__header {
+  margin: 2rem 0 1rem 0;
+}
+
+.markdown__header:first-child {
+  margin-top: 0;
+}
+
+.markdown__image {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  margin-bottom: 1rem;
+}
+
+.markdown__table-header {
+  border: 1px solid var(--surface_emphasis_border);
+  border-bottom: solid 2px var(--surface_emphasis_border);
+  background-color: var(--surface_deemphasis);
+  padding: 10px 16px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.markdown__table-cell {
+  border: 1px solid var(--surface_emphasis_border);
+  padding: 10px 16px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.markdown__text pre[class*='language-'] {
+  background-color: var(--surface);
+  margin: 0;
+}

@@ -1,0 +1,30 @@
+.mat-tree-node {
+  background-color: var(--background);
+  color: var(--text_on_surface);
+  min-height: auto;
+}
+
+.tree__node {
+  height: 4rem;
+}
+
+.tree__node--short {
+  height: 3rem;
+}
+
+.tree__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.tree__actions > .button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tree__node-label {
+  margin-bottom: 0;
+  color: var(--text_on_surface);
+}

@@ -1,0 +1,43 @@
+/* Selection List */
+.selection__container {
+  border-radius: var(--border_radius);
+  display: flex;
+  height: 100%;
+}
+
+.selection__list--pair-width {
+  width: 45%;
+}
+
+.selection__option {
+  border-left: var(--border_width_emphasis) solid transparent;
+  border-radius: var(--border_radius);
+  padding-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+}
+
+.selection__option:checked {
+  background: linear-gradient(
+    var(--list_selected_surface),
+    var(--list_selected_surface)
+  );
+  border-color: var(--selection_color);
+  color: var(--selection_text_color);
+  -webkit-text-fill-color: var(--selection_text_color);
+}
+
+.selection__option:hover {
+  background: linear-gradient(
+    var(--list_hover_surface),
+    var(--list_hover_surface)
+  );
+  color: var(--selection_text_color);
+}
+
+.select--surface {
+  background-color: var(--input_background);
+  border: 1px solid var(--input_border);
+  min-width: fit-content;
+}

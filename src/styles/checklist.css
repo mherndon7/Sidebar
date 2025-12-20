@@ -1,0 +1,36 @@
+.default__item,
+.edit__icons {
+  display: flex;
+}
+
+.edit__item {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 6.5rem);
+}
+
+.edit__svg {
+  display: flex;
+  align-items: center;
+}
+
+.edit__icon-placeholder {
+  width: 2.5rem;
+}
+
+.edit__label {
+  color: var(--text_on_surface);
+  width: 6.5rem;
+}
+
+.edit__no-label-input {
+  margin-left: 6.5rem;
+}
+
+.edit__item-value {
+  margin-left: 0.25rem;
+}
+
+.edit__no-label-input:not(.input--invalid) {
+  border-color: var(--surface_surface_border);
+}
