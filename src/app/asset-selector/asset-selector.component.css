@@ -1,0 +1,15 @@
+.asset-selector {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.asset-selector__input {
+  padding: 1rem;
+  width: 15rem;
+  margin: 0;
+}
+
+.asset-selector__popup {
+  width: 15rem;
+}

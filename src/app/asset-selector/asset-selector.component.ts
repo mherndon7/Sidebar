@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -18,12 +18,13 @@ import {
   templateUrl: './asset-selector.component.html',
   styleUrl: './asset-selector.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class AssetSelectorComponent {
   @ViewChild('instance', { static: true }) instance!: NgbTypeahead;
 
   readonly assets: string[] = ['Model 1', 'Model 22', 'Model 3', 'Model 4', 'Model 5', 'unique'];
-  protected asset: string = '';
+  protected asset: string = 'Model 4';
 
   protected focus$ = new Subject<string>();
   protected click$ = new Subject<string>();

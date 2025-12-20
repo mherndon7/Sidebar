@@ -1,12 +1,14 @@
-<input
-  id="typeahead-basic"
-  type="text"
-  class="form-control"
-  [editable]="false"
-  [showHint]="true"
-  [ngbTypeahead]="search"
-  [(ngModel)]="asset"
-  (focus)="focus$.next($any($event).target.value)"
-  (click)="click$.next($any($event).target.value)"
-  #instance="ngbTypeahead"
-/>
+<div class="asset-selector">
+  <input
+    type="text"
+    class="input asset-selector__input"
+    popupClass="asset-selector__popup"
+    [editable]="false"
+    [showHint]="true"
+    [ngbTypeahead]="search"
+    [(ngModel)]="asset"
+    (focus)="focus$.next($any($event).target.value)"
+    (click)="click$.next($any($event).target.value)"
+    #instance="ngbTypeahead"
+  />
+</div>
