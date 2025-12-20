@@ -153,6 +153,7 @@ body {
   background-color: var(--primary);
 }
 
+.dropdown-item.active,
 .dropdown-item:active,
 .dropdown-item:active .icon {
   color: var(--text_on_primary);

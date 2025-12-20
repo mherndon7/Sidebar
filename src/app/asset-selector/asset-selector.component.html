@@ -1,1 +1,12 @@
-<p>asset-selector works!</p>
+<input
+  id="typeahead-basic"
+  type="text"
+  class="form-control"
+  [editable]="false"
+  [showHint]="true"
+  [ngbTypeahead]="search"
+  [(ngModel)]="asset"
+  (focus)="focus$.next($any($event).target.value)"
+  (click)="click$.next($any($event).target.value)"
+  #instance="ngbTypeahead"
+/>
