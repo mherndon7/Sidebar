@@ -86,10 +86,9 @@ export class AssetSelectorComponent implements OnDestroy {
 
     return merge(debouncedText$, this.assetFocus(), clicksWithClosedPopup$).pipe(
       map((term: string) =>
-        (term === ''
+        term === ''
           ? this.assets
-          : this.assets.filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
-        ).slice(0, 10),
+          : this.assets.filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1),
       ),
     );
   };
