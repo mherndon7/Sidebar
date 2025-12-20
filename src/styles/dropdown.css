@@ -1,3 +1,8 @@
+/* Allows for click events on disabled 'select' elements */
+.disabled-select-wrapper select:disabled {
+  pointer-events: none;
+}
+
 /* Ng Bootstrap Overrides */
 .dropdown-toggle::after {
   display: none;
