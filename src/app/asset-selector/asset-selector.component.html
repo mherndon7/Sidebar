@@ -1,17 +1,24 @@
 <div class="asset-selector">
-  <input
-    type="text"
-    class="input asset-selector__input"
-    popupClass="asset-selector__popup"
-    [placeholder]="previousAsset"
-    [editable]="false"
-    [selectOnExact]="true"
-    [ngbTypeahead]="search"
-    [(ngModel)]="asset"
-    (ngModelChange)="selectAsset()"
-    (blur)="selectAsset()"
-    (focus)="focus$.next($any($event).target.value)"
-    (click)="click$.next($any($event).target.value)"
-    #instance="ngbTypeahead"
-  />
+  @if (this.active()) {
+    <input
+      type="text"
+      class="input asset-selector__input"
+      popupClass="asset-selector__popup"
+      [placeholder]="previousAsset()"
+      [editable]="false"
+      [selectOnExact]="true"
+      [ngbTypeahead]="search"
+      [(ngModel)]="asset"
+      (selectItem)="selectAsset()"
+      (blur)="selectAsset()"
+      (click)="click$.next($any($event).target.value)"
+      #instance="ngbTypeahead"
+    />
+  } @else {
+    <div class="disabled-select-wrapper" (click)="activate()">
+      <select disabled class="input asset-selector__input">
+        <option [value]="asset()">{{ asset() }}</option>
+      </select>
+    </div>
+  }
 </div>

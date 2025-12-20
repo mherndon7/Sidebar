@@ -1,4 +1,17 @@
-import { ChangeDetectionStrategy, Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  linkedSignal,
+  OnDestroy,
+  Signal,
+  signal,
+  ViewChild,
+  ViewEncapsulation,
+  WritableSignal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -10,6 +23,7 @@ import {
   OperatorFunction,
   Subject,
   merge,
+  of,
 } from 'rxjs';
 
 @Component({
@@ -20,8 +34,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class AssetSelectorComponent {
-  @ViewChild('instance', { static: true }) instance!: NgbTypeahead;
+export class AssetSelectorComponent implements OnDestroy {
+  @ViewChild('instance', { static: false })
+  private readonly typeAhead?: NgbTypeahead;
+
+  @ViewChild('instance', { static: false, read: ElementRef })
+  private readonly typeAheadElement?: ElementRef;
 
   readonly assets: string[] = [
     'Model 1',
@@ -31,19 +49,42 @@ export class AssetSelectorComponent {
     'Model 4',
     'Model 5',
     'unique',
-  ];
-  protected asset: string = 'Model 4';
+  ] as const;
 
-  protected focus$ = new Subject<string>();
-  protected click$ = new Subject<string>();
+  protected readonly active: WritableSignal<boolean>;
+  protected readonly asset: WritableSignal<string>;
+  protected readonly assetFocus: WritableSignal<string>;
 
-  protected previousAsset: string = this.asset;
+  protected readonly previousAsset: WritableSignal<string> = linkedSignal({
+    source: () => this.asset(),
+    computation: (
+      newValue: string,
+      previous:
+        | {
+            source: string;
+            value: string;
+          }
+        | undefined,
+    ) => newValue ?? previous?.value ?? this.assets[0],
+  });
+
+  protected readonly click$ = new Subject<string>();
+
+  constructor() {
+    this.active = signal(false);
+    this.asset = signal<string>(this.assets[0]);
+    this.assetFocus = signal<string>('');
+  }
+
+  ngOnDestroy(): void {
+    this.click$.complete();
+  }
 
   protected search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(0), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.typeAhead?.isPopupOpen()));
 
-    return merge(debouncedText$, this.focus$, clicksWithClosedPopup$).pipe(
+    return merge(debouncedText$, this.assetFocus(), clicksWithClosedPopup$).pipe(
       map((term: string) =>
         (term === ''
           ? this.assets
@@ -53,9 +94,17 @@ export class AssetSelectorComponent {
     );
   };
 
-  protected selectAsset(): void {
-    if (this.asset == null) this.asset = this.previousAsset;
-    else this.previousAsset = this.asset;
+  protected selectAsset() {
+    this.asset.set(this.asset() ?? this.previousAsset());
+    this.active.set(false);
   }
 
+  protected activate(): void {
+    this.active.set(true);
+
+    setTimeout(() => {
+      this.click$.next(this.asset());
+      this.typeAheadElement?.nativeElement.select();
+    }, 0);
+  }
 }
