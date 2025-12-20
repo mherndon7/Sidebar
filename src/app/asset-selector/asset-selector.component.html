@@ -9,8 +9,9 @@
       [selectOnExact]="true"
       [ngbTypeahead]="search"
       [(ngModel)]="asset"
-      (selectItem)="selectAsset()"
       (blur)="selectAsset()"
+      (selectItem)="selectAsset()"
+      (keydown)="typeaheadKeydown($event)"
       (click)="click$.next($any($event).target.value)"
       #instance="ngbTypeahead"
     />

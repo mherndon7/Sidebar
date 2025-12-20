@@ -1,12 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
-  effect,
   ElementRef,
   linkedSignal,
   OnDestroy,
-  Signal,
   signal,
   ViewChild,
   ViewEncapsulation,
@@ -23,7 +20,6 @@ import {
   OperatorFunction,
   Subject,
   merge,
-  of,
 } from 'rxjs';
 
 @Component({
@@ -93,7 +89,7 @@ export class AssetSelectorComponent implements OnDestroy {
     );
   };
 
-  protected selectAsset() {
+  protected selectAsset(): void {
     this.asset.set(this.asset() ?? this.previousAsset());
     this.active.set(false);
   }
@@ -105,5 +101,69 @@ export class AssetSelectorComponent implements OnDestroy {
       this.click$.next(this.asset());
       this.typeAheadElement?.nativeElement.select();
     }, 0);
+  }
+
+  protected typeaheadKeydown($event: KeyboardEvent): void {
+    // https://stackblitz.com/edit/angular-utd9ii?file=app%2Ftypeahead-scrollable.html
+    const instance = this.typeAhead;
+    if (!instance || !instance.isPopupOpen()) return;
+
+    setTimeout(() => {
+      const popup = document.getElementById(instance.popupId);
+      const activeElements = popup?.getElementsByClassName('active');
+
+      if (activeElements?.length === 1) {
+        const elem = activeElements[0] as any;
+        if (typeof elem.scrollIntoViewIfNeeded === 'function') {
+          // Non standard function, but works (in chrome)...
+          elem.scrollIntoViewIfNeeded();
+        } else {
+          // Do custom scroll calculation or use jQuery Plugin or ...
+          this.scrollIntoViewIfNeededPolyfill(elem as HTMLElement);
+        }
+      }
+    });
+  }
+
+  private scrollIntoViewIfNeededPolyfill(elem: HTMLElement, centerIfNeeded = true): void {
+    const parent = elem.parentElement;
+    if (parent == null) return;
+
+    const parentComputedStyle = window.getComputedStyle(parent, null);
+    const parentBorderTopWidth = parseInt(parentComputedStyle.getPropertyValue('border-top-width'));
+    const parentBorderLeftWidth = parseInt(
+      parentComputedStyle.getPropertyValue('border-left-width'),
+    );
+    const overTop = elem.offsetTop - parent.offsetTop < parent.scrollTop;
+    const overBottom =
+      elem.offsetTop - parent.offsetTop + elem.clientHeight - parentBorderTopWidth >
+      parent.scrollTop + parent.clientHeight;
+    const overLeft = elem.offsetLeft - parent.offsetLeft < parent.scrollLeft;
+    const overRight =
+      elem.offsetLeft - parent.offsetLeft + elem.clientWidth - parentBorderLeftWidth >
+      parent.scrollLeft + parent.clientWidth;
+    const alignWithTop = overTop && !overBottom;
+
+    if ((overTop || overBottom) && centerIfNeeded) {
+      parent.scrollTop =
+        elem.offsetTop -
+        parent.offsetTop -
+        parent.clientHeight / 2 -
+        parentBorderTopWidth +
+        elem.clientHeight / 2;
+    }
+
+    if ((overLeft || overRight) && centerIfNeeded) {
+      parent.scrollLeft =
+        elem.offsetLeft -
+        parent.offsetLeft -
+        parent.clientWidth / 2 -
+        parentBorderLeftWidth +
+        elem.clientWidth / 2;
+    }
+
+    if ((overTop || overBottom || overLeft || overRight) && !centerIfNeeded) {
+      elem.scrollIntoView(alignWithTop);
+    }
   }
 }
