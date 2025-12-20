@@ -17,4 +17,6 @@
 
 .asset-selector__popup {
   min-width: 15rem;
+  max-height: 20rem;
+  overflow-y: auto;
 }
