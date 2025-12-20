@@ -7,25 +7,9 @@ body {
 
   --font-size: 1.4rem;
 
-  --border_radius: 0.5rem;
-
-  --background: #121212;
-  --header: #1d1d1d;
-  --primary: #15794a;
-  --primary_hover: #159057;
-
-  --text_on_surface: #ffffff;
-  --text_on_primary: #ffffff;
-  --surface_border: #383838d8;
-
   --sidebar_hover: #3f3f3f;
   --sidebar_active: #383838;
   --sidebar_selected: #282828;
-
-  --scrollbar_track_piece: #1d1d1d;
-
-  --popover: #1d1d1d;
-  --popover_border: #3f3f3f;
 }
 
 body {
@@ -41,6 +25,11 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+::selection {
+  color: var(--selection_text_color);
+  background-color: var(--selection_color);
 }
 
 .noselect {
