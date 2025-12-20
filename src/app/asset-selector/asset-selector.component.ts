@@ -23,11 +23,21 @@ import {
 export class AssetSelectorComponent {
   @ViewChild('instance', { static: true }) instance!: NgbTypeahead;
 
-  readonly assets: string[] = ['Model 1', 'Model 22', 'Model 3', 'Model 4', 'Model 5', 'unique'];
+  readonly assets: string[] = [
+    'Model 1',
+    'Model 2',
+    'Model 22',
+    'Model 3',
+    'Model 4',
+    'Model 5',
+    'unique',
+  ];
   protected asset: string = 'Model 4';
 
   protected focus$ = new Subject<string>();
   protected click$ = new Subject<string>();
+
+  protected previousAsset: string = this.asset;
 
   protected search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(0), distinctUntilChanged());
@@ -42,4 +52,10 @@ export class AssetSelectorComponent {
       ),
     );
   };
+
+  protected selectAsset(): void {
+    if (this.asset == null) this.asset = this.previousAsset;
+    else this.previousAsset = this.asset;
+  }
+
 }
