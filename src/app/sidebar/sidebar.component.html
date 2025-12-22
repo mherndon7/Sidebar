@@ -64,7 +64,12 @@
 
     <div
       ngbDropdownAnchor
+      placement="end"
       class="sidebar__group noselect"
+      tooltipClass="popover-tooltip"
+      [openDelay]="300"
+      [disableTooltip]="group.expandable || !this.collapsed()"
+      [ngbTooltip]="group.label"
       [class.icon--collapsed]="collapsed()"
       [attr.active]="isActiveGroup(group)"
       (click)="onActive(group, groupDropdown)"

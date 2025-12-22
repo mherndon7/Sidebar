@@ -114,3 +114,12 @@ body {
 .chevron[direction='left'] {
   transform: rotate(90deg);
 }
+
+/* Ng Bootstrap Tooltip Overrides */
+.popover-tooltip .tooltip-inner {
+  font-size: var(--font-size);
+  padding: 0.75rem;
+  background-color: var(--popover);
+  border-color: var(--popover_border);
+  border-radius: var(--border_radius);
+}

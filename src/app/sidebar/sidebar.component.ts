@@ -7,6 +7,7 @@ import {
   NgbDropdownButtonItem,
   NgbDropdownItem,
   NgbDropdownMenu,
+  NgbTooltip,
 } from '@ng-bootstrap/ng-bootstrap';
 
 interface ToolOption {
@@ -49,6 +50,7 @@ class ToolGroup implements ToolOption {
     NgbDropdownItem,
     NgbDropdownButtonItem,
     NgbDropdownAnchor,
+    NgbTooltip,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
