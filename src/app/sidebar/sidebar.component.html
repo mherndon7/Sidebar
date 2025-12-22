@@ -1,5 +1,10 @@
-<section class="sidebar" [class.sidebar--collapsed]="collapsing()">
-  <span class="sidebar__tools">
+<section
+  class="sidebar"
+  [class.sidebar--collapsed]="collapsing() && !hasScroll()"
+  [class.sidebar--collapsed-scrollable]="collapsing() && hasScroll()"
+  (window:resize)="detectScroll()"
+>
+  <span #toolsRef class="sidebar__tools">
     @for (group of groups; track group.id) {
       <ng-container
         [ngTemplateOutlet]="groupRef"

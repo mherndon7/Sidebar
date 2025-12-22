@@ -16,6 +16,10 @@
   width: 3.5rem;
 }
 
+.sidebar--collapsed-scrollable {
+  width: 5rem;
+}
+
 .icon--collapsed {
   margin-right: 0;
 }

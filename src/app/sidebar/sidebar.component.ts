@@ -1,5 +1,14 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, signal, WritableSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  ElementRef,
+  signal,
+  ViewChild,
+  viewChild,
+  WritableSignal,
+} from '@angular/core';
 import {
   NgbCollapse,
   NgbDropdown,
@@ -57,9 +66,12 @@ class ToolGroup implements ToolOption {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
+  @ViewChild('toolsRef') protected readonly toolsElement?: ElementRef;
+
   protected readonly activeTool: WritableSignal<ToolOption>;
   protected readonly collapsing: WritableSignal<boolean>;
   protected readonly collapsed: WritableSignal<boolean>;
+  protected readonly hasScroll: WritableSignal<boolean>;
 
   protected hideTextTimer?: number;
   protected dropdownHovered: boolean;
@@ -89,6 +101,7 @@ export class SidebarComponent {
     this.activeTool = signal(this.groups[0]);
     this.collapsing = signal(false);
     this.collapsed = signal(false);
+    this.hasScroll = signal(false);
 
     effect(() => {
       if (this.collapsing()) {
@@ -100,6 +113,10 @@ export class SidebarComponent {
         clearTimeout(this.hideTextTimer);
         this.collapsed.set(false);
       }
+    });
+
+    effect(() => {
+      if (this.collapsed()) setTimeout(() => this.detectScroll(), 0);
     });
   }
 
@@ -134,5 +151,11 @@ export class SidebarComponent {
   protected onHoverDropdownMenu(hovered: boolean, dropdown: NgbDropdown): void {
     this.dropdownHovered = hovered;
     if (!hovered) dropdown.close();
+  }
+
+  protected detectScroll(): void {
+    this.hasScroll.set(
+      this.toolsElement?.nativeElement.scrollHeight > this.toolsElement?.nativeElement.clientHeight,
+    );
   }
 }
