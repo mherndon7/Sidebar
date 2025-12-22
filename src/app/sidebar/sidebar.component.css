@@ -72,6 +72,16 @@
   height: fit-content;
 }
 
+.sidebar__dropdown-title.dropdown-item.disabled,
+.sidebar__dropdown-title.dropdown-item:disabled {
+  border-radius: 0;
+}
+
+.sidebar__dropdown-title[expandable='true'] {
+  margin-bottom: 0.75rem;
+  border-bottom: var(--border_width) solid var(--surface_surface_border);
+}
+
 .sidebar__dropdown-item {
   padding: 0.5rem;
 }

@@ -40,6 +40,16 @@
       (mouseenter)="onHoverDropdownMenu(true, groupDropdown)"
       (mouseleave)="onHoverDropdownMenu(false, groupDropdown)"
     >
+      @if (this.collapsed()) {
+        <p
+          disabled
+          ngbDropdownItem
+          [attr.expandable]="group.expandable"
+          class="dropdown-item--unselectable sidebar__option-label sidebar__dropdown-item sidebar__dropdown-title"
+        >
+          {{ group.label }}
+        </p>
+      }
       @for (option of group.options; track option.id) {
         <button
           ngbDropdownItem
