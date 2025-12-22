@@ -1,9 +1,11 @@
 .icon {
+  flex-shrink: 0;
   width: 2rem;
   height: 2rem;
   margin-right: 0.5rem;
   background-size: 100% auto;
   color: var(--text_on_surface);
+  fill: var(--text_on_surface);
 }
 
 .icon--side-effects:hover {
